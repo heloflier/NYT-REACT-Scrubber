@@ -1,0 +1,27 @@
+
+body {
+	background-color: LemonChiffon;
+}
+
+.jumbotron {
+	background-image: url(../images/NYT_espresso.jpg);
+	height: 15rem;
+	width: 100%;
+	color: OrangeRed;
+	background-position: center center;
+	background-size: cover;
+}
+
+#empty-db-alert {
+	display: none
+}
+
+.card {
+	margin: 1rem;
+	padding: 1rem;
+	background-color: Lavender;
+}
+
+.btn {
+	margin: 1rem;
+}
