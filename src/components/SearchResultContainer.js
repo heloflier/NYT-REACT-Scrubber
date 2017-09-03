@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Search from "./search";
+import Results from "./results";
 import API from "../utils/API";
-
-const authKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
 
 // Counter to keep track of article numbers as they come in
 var articleCounter = 0;
@@ -20,24 +19,25 @@ class SearchResultContainer extends Component {
   }
 
   searchAPI = () => {
-    let search = this.state.search
-    let startDate = this.state.startDate;
-    let endDate = this.state.endDate;
-    let query = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
-                authKey + 
-                "&q="+
-                search + 
-                "&begin_date=" + 
-                startDate +
-                "&end_date=" +  
-                endDate;
+      let search = this.state.search
+      let startDate = this.state.startDate;
+      let endDate = this.state.endDate;
+      let query = search + 
+                  "&begin_date=" + 
+                  startDate + "0101" +
+                  "&end_date=" +  
+                  endDate + "0101"; 
 
-    API.search(query)
-      .then(res => this.setState({ results: res.data.data }))
-      .catch(err => console.log(err));
+      API.search(query)
+        .then(res => {this.setState({ results: res.data.response.docs }); console.log('real results: ', this.state.results)})
+        .catch(err => console.log(err));
 
-    console.log('query: ', query);
-    console.log('results: ', this.state.results);
+      console.log('query: ', query);
+      this.setState({
+                  search: "",
+                  startDate: "",
+                  endDate: ""
+      })
   };
 
   handleInputChange = event => {
@@ -64,6 +64,7 @@ class SearchResultContainer extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
+        <Results results={this.state.results} />
       </div>
     );
   }
