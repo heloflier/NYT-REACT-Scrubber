@@ -4,13 +4,13 @@ import Results from "./results";
 import API from "../utils/API";
 
 // Counter to keep track of article numbers as they come in
-var articleCounter = 0;
+// var articleCounter = 0;
 
 class SearchResultContainer extends Component {
   state = {
-    search: "",
-    startDate: "",
-    endDate: "",
+    search: "news",
+    startDate: "2000",
+    endDate: "2012",
     results: []
   };
 

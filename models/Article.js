@@ -21,11 +21,11 @@ const ArticleSchema = new Schema({
 			},
 			date: 	{
 				type: 		Date,
-				required: 	true
+				required: 	false
 			},
-			documents: [{
+			comments: [{
 					type: Schema.ObjectId,
-					ref : 'Document'
+					ref : 'Comment'
 			}]
 })
 
