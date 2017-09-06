@@ -14,8 +14,7 @@ mongoose.Promise = bluebird;
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(express.static(__dirname + "/public"));
-app.use("/", routes);
+app.use(express.static(__dirname + "/build"));
 
 var db = process.env.MONGODB_URI || "mongodb://localhost/quotesApp";
 
@@ -39,6 +38,8 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next();
 });
+
+app.use("/", routes);
 
 app.post("/api/articles", apiController.create);
 
