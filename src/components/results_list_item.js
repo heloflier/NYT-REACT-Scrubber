@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import API from '../utils/API';
 import moment from "moment";
+import Saved from './saved';
 
 class ResultsListItem extends Component {
 	constructor(props) {
-		super();
+		super();		
 
 		this.handleButtonClick = this.handleButtonClick.bind(this);
 	}
@@ -12,8 +13,7 @@ class ResultsListItem extends Component {
 	handleButtonClick() {
 		console.log('save props: ', this.props);
 		const newArticle = this.props.article;
-		API.saveArticle(newArticle).then(console.log(newArticle));
-		console.log(this.state);
+		API.saveArticle(newArticle).then(console.log('newArticle: ', newArticle));
 	}
 
 	render() {

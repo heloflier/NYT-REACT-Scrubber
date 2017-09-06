@@ -2,20 +2,34 @@ import React, { Component } from "react";
 import Search from "./search";
 import Results from "./results";
 import API from "../utils/API";
+import Saved from './saved'
 
 // Counter to keep track of article numbers as they come in
 // var articleCounter = 0;
 
 class SearchResultContainer extends Component {
-  state = {
-    search: "news",
-    startDate: "2000",
-    endDate: "2012",
-    results: []
-  };
+    constructor(props) {
+        super(props)
 
-  componentDidMount() {
+        this.state = {
+          search: "news",
+          startDate: "2000",
+          endDate: "2012",
+          results: [],
+          saved: []
+        };
+    }
 
+    // Getting all quotes when the component mounts
+    componentDidMount() {
+      this.getArticles();
+    }
+
+  getArticles = () => {
+    API.getArticles().then((res) => {
+      console.log('saved res.data: ', res.data)
+        this.setState({ saved: res.data });
+    });
   }
 
   searchAPI = () => {
@@ -65,6 +79,7 @@ class SearchResultContainer extends Component {
           handleInputChange={this.handleInputChange}
         />
         <Results results={this.state.results} />
+        <Saved savedItems={this.state.saved} />
       </div>
     );
   }

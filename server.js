@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/build"));
 
-var db = process.env.MONGODB_URI || "mongodb://localhost/quotesApp";
+var db = process.env.MONGODB_URI || "mongodb://localhost/nyt-react";
 
 // Connect mongoose to our database
 mongoose.connect(db, function(error) {
@@ -42,6 +42,8 @@ app.use((req, res, next) => {
 app.use("/", routes);
 
 app.post("/api/articles", apiController.create);
+
+app.get("/api/articles", apiController.index);
 
 // Start the server
 app.listen(PORT, function() {
