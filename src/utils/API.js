@@ -13,11 +13,12 @@ const API = {
   saveArticle: function(article) {
     return axios.post(process.env.REACT_APP_API_HOST + "/api/articles", { article });
   },
-  // Deletes a article from the db
+  // Deletes an article from the db
   deleteArticle: function(id) {
+    console.log('in API delete article ')
     return axios.delete(process.env.REACT_APP_API_HOST + `/api/articles/${id}`);
   },
-  // Toggles a article's favorite property in the db
+  // Toggles an article's favorite property in the db
   favoriteArticle: function(article) {
     article.favorited = !article.favorited;
     const { _id, favorited } = article;

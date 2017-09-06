@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from '../utils/API';
 import moment from "moment";
-import Saved from './saved';
 
 class ResultsListItem extends Component {
 	constructor(props) {
@@ -22,18 +21,22 @@ class ResultsListItem extends Component {
 			<div className="card">
 				<div className="card-block">
 					<h4>{this.props.article.headline.main}</h4>
-					<p>Date Published: {moment(this.props.article.pub_date).format("MMM Do YYYY")}</p>
+					<p>Date Published: {moment(this.props.article.pub_date).format("MMM Do YYYY")}
+						<span>
+							<button
+								id="save-button"
+								type="button"
+								className="btn btn-outline-primary float-right"
+								onClick={this.handleButtonClick}
+							>
+								Save Article
+							</button>
+						</span>
+					</p>
 					<p>
 						<a href={this.props.article.web_url}>link here</a>
 					</p>
-					<button
-						id="save-button"
-						type="button"
-						className="btn btn-outline-primary float-right"
-						onClick={this.handleButtonClick}
-					>
-						Save Article
-					</button>
+
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,6 @@
 
 import React from "react";
 import SavedListItem from "./saved_list_item";
-import moment from "moment";
 
 const Saved = props => {
 	if (!props.savedItems.length) {
