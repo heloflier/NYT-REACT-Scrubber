@@ -2,7 +2,7 @@
 
 A MERN full stack app that scrapes the New York Times online articles based on user preferences, showing the headlines and a link to the media. articles with their links can be saved to MongoDB; in addition, comments can be added to specific articles.
 
-see on Heroku at:https://nyt-react-scrubber.herokuapp.com/
+see on Heroku at: https://nyt-react-scrubber.herokuapp.com/
 
 Technologies employed:
 - REACT
