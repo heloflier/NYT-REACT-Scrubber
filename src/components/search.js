@@ -4,7 +4,7 @@ const Search = props =>
 <div>
     <form className="search">
 	    <div className="form-group">
-	      <label htmlFor="search">subject:</label>
+	      <label htmlFor="search" className="form-text-color">subject:</label>
 	      <input
 	        value={props.search}
 	        onChange={props.handleInputChange}
@@ -16,26 +16,26 @@ const Search = props =>
 	        />
 	    </div>
 	    	    <div className="form-group">
-	      <label htmlFor="start-date">start date:</label>
+	      <label htmlFor="start-date" className="form-text-color">start date:</label>
 	      <input
 	        value={props.startDate}
 	        onChange={props.handleInputChange}
 	        name="startDate"
-	        type="text"
+	        type="number" min="0" max="3000"
 	        className="form-control"
-	        placeholder="Type in a start date to begin"
+	        placeholder="Type in a start year to begin - only numbers are allowed"
 	        id="start-date"
 	      />
 	    </div>
 	    <div className="form-group">
-	      <label htmlFor="end-date">end date:</label>
+	      <label htmlFor="end-date" className="form-text-color">end date:</label>
 	      <input
 	        value={props.endDate}
 	        onChange={props.handleInputChange}
 	        name="endDate"
-	        type="text"
+	        type="number" min="0" max="3000"
 	        className="form-control"
-	        placeholder="Type in an end date to begin"
+	        placeholder="Type in an end year to begin - only numbers are allowed"
 	        id="end-date"
 	      />
 	    </div>

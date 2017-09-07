@@ -1,15 +1,29 @@
 
 body {
 	background-color: LemonChiffon;
+	background-image: url("../images/vintage-2608934_1920.jpg");
+	background-image: url("../images/news-1591767_1920.jpg");
+	background-position: center center;
+	background-size: cover;
+	background-attachment:fixed;
+	opacity: .92;
+
 }
 
 .jumbotron {
-	background-image: url(../images/NYT_espresso.jpg);
+	background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 	height: 15rem;
 	width: 100%;
-	color: OrangeRed;
+	color: lightgrey;
 	background-position: center center;
 	background-size: cover;
+}
+
+.form-text-color {
+	color: white;
 }
 
 #empty-db-alert {

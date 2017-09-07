@@ -18,13 +18,11 @@ module.exports = {
     },
   	// This method handles creating new articles
     create: function(req, res) {
-      	console.log('in create ----------------------------------------')
-      	console.log('req.body: ', req.body)
       	const savedArticle 	= {};
       	savedArticle.title 	= req.body.article.headline.main;
     	  savedArticle.url	= req.body.article.web_url;
-    	  savedArticle.date	= req.body.article.pub_date;  
-    	  console.log('savedArticle: ', savedArticle)
+    	  // savedArticle.date	= req.body.article.pub_date;  
+        savedArticle.date = Date.now();
         Article.create(savedArticle).then(function(doc) {
           	res.json(doc);
         }).catch(function(err) {
@@ -33,8 +31,6 @@ module.exports = {
     },
       // This method handles deleting articles
     destroy: function(req, res) {
-        console.log('in destroy ----------------------------------------')
-        console.log('req.params: ', req.params)
         Article.remove({
           _id: req.params.id
         }).then(function(doc) {

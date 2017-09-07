@@ -4,31 +4,27 @@ import Results from "./results";
 import API from "../utils/API";
 import Saved from './saved'
 
-// Counter to keep track of article numbers as they come in
-// var articleCounter = 0;
-
 class SearchResultContainer extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-          search: "news",
-          startDate: "2000",
-          endDate: "2012",
+          search: "",
+          startDate: "",
+          endDate: "",
           results: [],
           saved: [],
           deleted: false
         };
     }
 
-    // Getting all quotes when the component mounts
+    // Getting all articles when the component mounts
     componentDidMount() {
       this.getArticles();
     }
 
     getArticles = () => {
         API.getArticles().then((res) => {
-            console.log('saved res.data: ', res.data)
             this.setState({ saved: res.data,
                             deleted: false 
                           });
@@ -46,10 +42,9 @@ class SearchResultContainer extends Component {
                     endDate + "0101"; 
 
       API.search(query)
-        .then(res => {this.setState({ results: res.data.response.docs }); console.log('real results: ', this.state.results)})
+        .then(res => {this.setState({ results: res.data.response.docs })})
         .catch(err => console.log(err));
 
-      console.log('query: ', query);
       this.setState({
                   search: "",
                   startDate: "",
@@ -59,17 +54,31 @@ class SearchResultContainer extends Component {
 
   handleInputChange = event => {
     const name = event.target.name;
-    const value = event.target.value;
+    let value  = event.target.value;
+    if (name === "startDate" || name === "endDate") {
+      value = value.substring(0, 4);
+    }
     this.setState({
       [name]: value
     });
   };
 
-  // When the form is submitted, search the Giphy API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchAPI();
+    let valid = this.validateDates();
+    if (valid) {
+        this.searchAPI();
+    }
   };
+
+  validateDates = () => {
+    let startDate = this.state.startDate;
+    let endDate = this.state.endDate;
+    if (startDate.length < 4 || endDate.length < 4) {
+        alert("please check your dates: year needs to be 4 digits long")
+    }
+    else return true
+  }
 
   render() {
     return (

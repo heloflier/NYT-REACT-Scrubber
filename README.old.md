@@ -9,9 +9,9 @@ Technologies employed:
 - Node.js
 - MongoDB
 - Mongoose npm module
-- Express npm module
-- Cheerio npm module for scraping
-- Bootstrap 
+- Express  npm module
+- Cheerio  npm module for scraping
+- Bootstrap 4
 
 Future Improvements:
 - refine structure

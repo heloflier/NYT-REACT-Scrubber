@@ -8,10 +8,8 @@ const Saved = props => {
 	}
 	console.log('props in Saved: ', props)
 	const savedArticles = props.savedItems.map(article => {
-		console.log(article._id);
 		return <SavedListItem key={article._id} article={article} getArticles={props.getArticles} />;
 	});
-//	if (!props.savedItems.length) {return null}
 	return (
 		<div>
 			<div className="card">

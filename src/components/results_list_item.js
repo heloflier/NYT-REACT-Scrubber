@@ -10,7 +10,6 @@ class ResultsListItem extends Component {
 	}
 
 	handleButtonClick() {
-		console.log('save props: ', this.props);
 		const newArticle = this.props.article;
 		API.saveArticle(newArticle).then(this.props.getArticles);
 	}
@@ -34,7 +33,7 @@ class ResultsListItem extends Component {
 						</span>
 					</p>
 					<p>
-						<a href={this.props.article.web_url}>link here</a>
+						<a href={this.props.article.web_url} target="_blank">link here</a>
 					</p>
 
 				</div>

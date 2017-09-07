@@ -20,31 +20,21 @@ var db = process.env.MONGODB_URI || "mongodb://localhost/nyt-react";
 
 // Connect mongoose to our database
 mongoose.connect(db, function(error) {
-  // Log any errors connecting with mongoose
   if (error) {
     console.error(error);
   }
-  // Or log a success message
   else {
     console.log("mongoose connection is successful");
   }
 });
 
-// enable CORS, use:
-// https://enable-cors.org/server_expressjs.html
-// ...there also CORS modules to do this.
+// enable CORS
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next();
 });
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//   next();
-// });
 
 app.use("/", routes);
 

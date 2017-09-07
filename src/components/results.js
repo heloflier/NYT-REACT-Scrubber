@@ -8,12 +8,9 @@ const Results = props => {
 	}
 	const articleItems = props.results.map((article, index) => {
 		if (index < 5) {
-			console.log(article._id);
-			console.log('results props: ', props)
 			return <ResultsListItem key={article._id} article={article} getArticles={props.getArticles} />;
 		}
 	});
-	console.log('articleItems: ', articleItems)
 	return (
 		<div>
 			<div className="card">
