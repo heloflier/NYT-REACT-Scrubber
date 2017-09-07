@@ -9,12 +9,18 @@ const Saved = props => {
 	console.log('props in Saved: ', props)
 	const savedArticles = props.savedItems.map(article => {
 		console.log(article._id);
-		return <SavedListItem key={article._id} article={article} />;
+		return <SavedListItem key={article._id} article={article} getArticles={props.getArticles} />;
 	});
 //	if (!props.savedItems.length) {return null}
 	return (
 		<div>
-			<div>{savedArticles}</div>
+			<div className="card">
+				<div className="card-block">
+					<h2>Saved Articles</h2>
+					<div>{savedArticles}</div>
+				</div>
+			</div>
+
 		</div>
 	);
 };

@@ -15,7 +15,9 @@ class SavedListItem extends Component {
 	handleButtonClick() {
 		console.log('delete props: ', this.props);
 		const articleId = this.props.article._id;
-		API.deleteArticle(articleId).then(console.log('articleId: ', articleId));
+		API.deleteArticle(articleId)
+		.then(this.props.getArticles);
+		console.log('deleted props: ', this.props)
 	}
 
 	render() {

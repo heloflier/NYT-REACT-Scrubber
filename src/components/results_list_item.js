@@ -12,7 +12,7 @@ class ResultsListItem extends Component {
 	handleButtonClick() {
 		console.log('save props: ', this.props);
 		const newArticle = this.props.article;
-		API.saveArticle(newArticle).then(console.log('newArticle: ', newArticle));
+		API.saveArticle(newArticle).then(this.props.getArticles);
 	}
 
 	render() {

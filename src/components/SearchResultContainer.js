@@ -16,7 +16,8 @@ class SearchResultContainer extends Component {
           startDate: "2000",
           endDate: "2012",
           results: [],
-          saved: []
+          saved: [],
+          deleted: false
         };
     }
 
@@ -25,22 +26,24 @@ class SearchResultContainer extends Component {
       this.getArticles();
     }
 
-  getArticles = () => {
-    API.getArticles().then((res) => {
-      console.log('saved res.data: ', res.data)
-        this.setState({ saved: res.data });
-    });
-  }
+    getArticles = () => {
+        API.getArticles().then((res) => {
+            console.log('saved res.data: ', res.data)
+            this.setState({ saved: res.data,
+                            deleted: false 
+                          });
+        });
+    }
 
-  searchAPI = () => {
-      let search = this.state.search
-      let startDate = this.state.startDate;
-      let endDate = this.state.endDate;
-      let query = search + 
-                  "&begin_date=" + 
-                  startDate + "0101" +
-                  "&end_date=" +  
-                  endDate + "0101"; 
+    searchAPI = () => {
+        let search = this.state.search
+        let startDate = this.state.startDate;
+        let endDate = this.state.endDate;
+        let query = search + 
+                    "&begin_date=" + 
+                    startDate + "0101" +
+                    "&end_date=" +  
+                    endDate + "0101"; 
 
       API.search(query)
         .then(res => {this.setState({ results: res.data.response.docs }); console.log('real results: ', this.state.results)})
@@ -78,8 +81,8 @@ class SearchResultContainer extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <Results results={this.state.results} />
-        <Saved savedItems={this.state.saved} />
+        <Results results={this.state.results} getArticles={this.getArticles} />
+        <Saved savedItems={this.state.saved} deleted={this.state.deleted} getArticles={this.getArticles} />
       </div>
     );
   }
