@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASEURL  = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
-const APIKEY   = process.env.API_KEY;
+const APIKEY   = process.env.REACT_APP_API_KEY;
 const queryFix = "&q=";
 
 const API = {

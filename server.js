@@ -2,11 +2,17 @@
 // Require our dependecies
 var express = require("express");
 var mongoose = require("mongoose");
-var dotenv = require('dotenv').config()
+var dotenv = require('dotenv').config();
 var bluebird = require("bluebird");
 var bodyParser = require("body-parser");
 var routes = require("./routes/routes");
-var apiController = require('./controllers/apiController')
+var apiController = require('./controllers/apiController');
+
+if (dotenv.error) {
+  throw result.error
+};
+
+console.log('dotenv: ', dotenv)
 
 // Set up a default port, configure mongoose, configure our middleware
 var PORT = process.env.PORT || 4000;
